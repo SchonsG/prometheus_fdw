@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 RUN cargo install --locked --version 0.12.6 cargo-pgrx \
     && cargo pgrx init --pg15 download
 
-RUN git clone --branch v0.2.1 --depth 1 https://github.com/tembo-io/prometheus_fdw
+COPY . /prometheus_fdw
 
 WORKDIR /prometheus_fdw
 
