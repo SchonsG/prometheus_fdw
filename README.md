@@ -2,7 +2,7 @@
 
 Prometheus_fdw is an integration of Prometheus monitoring data into Postgres. It enables querying for Prometheus metrics directly within Postgres, bridging the gap between Prometheus monitoring and Postgres's robust database capabilities.
 
-Learn more about it in this [blog post](https://tembo.io/blog/monitoring-with-prometheus-fdw). 
+Learn more about it in this [blog post](https://tembo.io/blog/monitoring-with-prometheus-fdw).
 Watch it in action in this [demo video](https://youtu.be/LVuH4RtNQss)
 
 [![Tembo Cloud Try Free](https://tembo.io/tryFreeButton.svg)](https://cloud.tembo.io/sign-up)
@@ -68,3 +68,11 @@ WHERE
 ## Examples
 
 Please see the `examples/` directory to find a basic example and a practical example. In the practical example, metrics are automatically synced into the database using `pg_cron`, and automatically expired using `pg_partman`. Performance is optimized using indexes and partitioning.
+
+## Dockerfile
+
+To build the docker image, run the following command:
+
+```bash
+docker build -t prometheus_fdw .
+```
