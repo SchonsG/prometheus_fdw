@@ -123,13 +123,14 @@ impl PrometheusFdw {
                 let metric_name_filter = quals
                     .iter()
                     .find(|qual| qual.field == "metric_name" && qual.operator == "=");
-                let lower_timestamp = quals
-                    .iter()
-                    .find(|qual| qual.field == "metric_time" && qual.operator == ">");
 
-                let upper_timestamp = quals
-                    .iter()
-                    .find(|qual| qual.field == "metric_time" && qual.operator == "<");
+                let lower_timestamp = quals.iter().find(|qual| {
+                    qual.field == "metric_time" && qual.operator == ">" || qual.operator == ">="
+                });
+
+                let upper_timestamp = quals.iter().find(|qual| {
+                    qual.field == "metric_time" && qual.operator == "<" || qual.operator == "<="
+                });
 
                 if let (Some(metric_name), Some(lower_timestamp), Some(upper_timestamp)) =
                     (metric_name_filter, lower_timestamp, upper_timestamp)
